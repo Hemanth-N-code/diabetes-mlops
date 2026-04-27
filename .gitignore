@@ -3,5 +3,6 @@ __pycache__/
 mlruns/
 .dvc/cache/
 data/raw/diabetes.csv
-drift_report.html
 .env
+model_and_data_drift_report.html
+mlflow.db
