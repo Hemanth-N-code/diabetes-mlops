@@ -17,18 +17,28 @@ jobs:
       with:
         python-version: '3.12'
         
-    - name: Install dependencies
+    - name: Install and Fix Dependencies
       run: |
         python -m pip install --upgrade pip
+        # Install base requirements
         pip install setuptools
         pip install -r requirements.txt
         
-    - name: Run Model Training Check
-      run: |
-        # This ensures the script is syntactically correct and imports work
-        python -c "import mlflow; import sklearn; print('ML Stack Ready')"
+        # Apply the MLOps Stack Fixes (Crucial for Python 3.12)
+        pip install "evidently>=0.4.0,<0.5.0" --force-reinstall
+        pip install "pandas<3.0.0" "cryptography<47.0.0" "pyarrow<24.0.0"
         
-    - name: Run Monitoring Test
+    - name: Verify MLflow Stack
       run: |
-        # Simple check to ensure Evidently is properly installed in the CI env
-        python -c "from evidently.report import Report; print('Monitoring Stack Ready')"
+        python -c "import mlflow; print('✅ MLflow Library Fixed!')"
+        python -c "import sklearn; print('✅ Scikit-learn Ready')"
+        
+    - name: Verify Monitoring Stack
+      run: |
+        # This confirms Evidently is properly structured in the CI environment
+        python -c "from evidently.report import Report; print('✅ Monitoring Library Fixed!')"
+        
+    - name: Run Data Drift Check (Mock)
+      run: |
+        # Runs the monitoring script to ensure it can generate a report in CI
+        python src/monitoring.py
