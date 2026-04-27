@@ -16,7 +16,8 @@ def manage_model(model_name="diabetes_classifier"):
     client.transition_model_version_stage(
         name=model_name,
         version=mv.version,
-        stage="Staging"
+        stage="Staging",
+        archive_existing_versions=True
     )
     print(f"Model version {mv.version} moved to Staging.")
 
