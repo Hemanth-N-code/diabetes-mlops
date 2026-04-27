@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+mlruns/
+.dvc/cache/
+data/raw/diabetes.csv
+drift_report.html
+.env

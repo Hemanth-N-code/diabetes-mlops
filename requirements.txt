@@ -1,0 +1,23 @@
+# --- Base Utilities (Fixes the crashes) ---
+setuptools>=70.0.0     
+pathspec==0.11.2       
+
+# --- Machine Learning & Data ---
+pandas>=2.2.1
+numpy>=1.26.4
+scikit-learn>=1.4.2
+scipy>=1.13.0
+
+# --- MLOps Lifecycle ---
+mlflow         
+dvc>=3.50.0           
+
+# --- Deployment & API ---
+fastapi>=0.110.1
+uvicorn>=0.29.0
+pydantic>=2.7.0
+
+
+evidently>=0.4.20       
+pytest>=8.1.1
+requests>=2.31.0
